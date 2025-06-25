@@ -1,5 +1,5 @@
-freqtrade
-freqtrade-freqai
+git+https://github.com/freqtrade/freqtrade.git
+git+https://github.com/freqtrade/freqtrade-freqai.git
 pandas
 scikit-learn
 ta
