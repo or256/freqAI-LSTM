@@ -2,3 +2,4 @@ freqtrade
 pandas
 scikit-learn
 numpy
+ta-lib
