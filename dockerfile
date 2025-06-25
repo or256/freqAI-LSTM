@@ -1,13 +1,18 @@
-FROM python:3.10-slim
+# 1. בסיס: גרסת פייתון יציבה
+FROM python:3.10
 
-# התקנת git וכלי בסיס
-RUN apt-get update && apt-get install -y git
-
+# 2. תיקיית העבודה בתוך הקונטיינר
 WORKDIR /app
+
+# 3. העתקת דרישות התקנה (requirements)
+COPY requirements.txt .
+
+# 4. התקנת חבילות נדרשות
+RUN pip install --upgrade pip \
+ && pip install -r requirements.txt
+
+# 5. העתקת שאר קבצי הקוד
 COPY . .
 
-# התקנת pip וחבילות
-RUN pip install --upgrade pip \
-    && pip install -r requirements.txt
-
-CMD ["freqtrade", "trade", "--config", "config-example.json", "--strategy", "ExampleLSTMStrategy"]
+# 6. הפקודה שמריצה את הקוד
+CMD ["python", "ExampleLSTMStrategy.py"]
