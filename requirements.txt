@@ -1,5 +1,4 @@
-freqtrade[complete]
+freqtrade
 pandas
 scikit-learn
-ta
 numpy
