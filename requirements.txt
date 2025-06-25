@@ -1,4 +1,4 @@
-freqtrade
+git+https://github.com/freqtrade/freqtrade.git
 pandas
 scikit-learn
 numpy
