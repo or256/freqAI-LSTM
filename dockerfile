@@ -1,11 +1,10 @@
 FROM python:3.10-slim
 
-# התקנת תלויות בסיס
 WORKDIR /app
-COPY . /app
+COPY . .
 
-RUN pip install poetry && \
-    poetry config virtualenvs.create false && \
-    poetry install --no-interaction --no-ansi
+# התקנת תלויות ידנית
+RUN pip install --upgrade pip \
+    && pip install -r requirements.txt
 
 CMD ["freqtrade", "trade", "--config", "config-example.json", "--strategy", "ExampleLSTMStrategy"]
