@@ -1,0 +1,5 @@
+freqtrade
+freqtrade-freqai
+pandas
+scikit-learn
+ta
