@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: freqAI-LSTM
+    env: docker
+    plan: free
+    autoDeploy: true
