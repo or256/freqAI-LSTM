@@ -1,5 +1,44 @@
-git+https://github.com/freqtrade/freqtrade.git
-git+https://github.com/freqtrade/freqai.git
-pandas
-scikit-learn
-ta
+# בסיס אופטימלי ל-Freqtrade
+
+FROM python:3.10-slim
+
+# משתני סביבה
+
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# תיקיית עבודה
+
+WORKDIR /app
+
+# התקנת תלויות מערכת
+
+RUN apt-get update && apt-get install -y   
+gcc   
+g++   
+make   
+libffi-dev   
+libssl-dev   
+curl   
+&& rm -rf /var/lib/apt/lists/*
+
+# העתקת requirements
+
+COPY requirements.txt .
+
+# התקנת Python packages
+
+RUN pip install –upgrade pip setuptools wheel &&   
+pip install –no-cache-dir -r requirements.txt
+
+# העתקת קוד
+
+COPY . .
+
+# פורט (אם נדרש)
+
+EXPOSE 8080
+
+# הרצת האפליקציה
+
+CMD [“python”, “ExampleLSTMStrategy.py”]
